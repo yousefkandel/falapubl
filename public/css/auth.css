@@ -1,0 +1,140 @@
+/* صفحة تسجيل الدخول — لوحة تحكم فلك */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* توهجات نجمية خفيفة */
+.auth-page .star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--falak-gold-light);
+  border-radius: 50%;
+  opacity: .55;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: .15; transform: scale(.8); }
+  50% { opacity: .8; transform: scale(1.2); }
+}
+
+/* فرع الورود الزخرفي أسفل يمين الشاشة (SVG بسيط بروح صفحة الهبوط) */
+.auth-rose-decor {
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 340px;
+  opacity: .5;
+  filter: drop-shadow(0 0 25px rgba(124,91,168,.25));
+  pointer-events: none;
+  z-index: 0;
+}
+.auth-rose-decor.top-right {
+  bottom: auto;
+  left: auto;
+  top: -60px;
+  right: -60px;
+  transform: rotate(20deg);
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--falak-bg-card);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--falak-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+  padding: 40px 36px;
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.auth-brand .logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--falak-purple-500), var(--falak-purple-700));
+  box-shadow: 0 0 0 1px var(--falak-border-strong), 0 8px 24px rgba(124,91,168,.4);
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--falak-gold-light);
+  margin-bottom: 14px;
+}
+.auth-brand h1 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin: 0 0 6px;
+  color: var(--falak-text);
+}
+.auth-brand p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--falak-text-muted);
+}
+
+.auth-form .form-group { margin-bottom: 18px; }
+
+.auth-form .input-icon-wrap { position: relative; }
+.auth-form .input-icon-wrap .form-control { padding-left: 44px; }
+.auth-form .input-icon-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--falak-text-faint);
+}
+
+.auth-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font-size: 13px;
+}
+.auth-form-footer label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--falak-text-muted);
+  cursor: pointer;
+}
+.auth-form-footer a { color: var(--falak-purple-300); }
+.auth-form-footer a:hover { color: var(--falak-gold-light); }
+
+.auth-submit { width: 100%; padding: 13px; font-size: 15px; }
+
+.auth-error {
+  background: rgba(217,112,122,.1);
+  border: 1px solid rgba(217,112,122,.35);
+  color: #f0b3b8;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  margin-bottom: 18px;
+}
+
+.auth-divider {
+  text-align: center;
+  color: var(--falak-text-faint);
+  font-size: 12px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--falak-border);
+}
