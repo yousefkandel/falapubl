@@ -423,13 +423,14 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
   gap: 8px;
   padding-top: 16px;
   border-top: 1px solid rgba(201,160,99,.18);
+  align-items: flex-start;
 }
 .fk-meta-row{
   display: flex;
   gap: 8px;
   font-size: 13.5px;
 }
-.fk-half--end .fk-meta-row{ flex-direction: row-reverse; }
+/* .fk-half--end .fk-meta-row{ flex-direction: row-reverse; } */
 @media (max-width: 860px){
   .fk-half--end .fk-meta-row{ flex-direction: row; }
 }

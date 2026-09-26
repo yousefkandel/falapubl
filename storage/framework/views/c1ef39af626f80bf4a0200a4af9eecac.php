@@ -27,11 +27,17 @@
 
             <div class="fk-details">
                 <span class="fk-eyebrow">ENGLISH EDITION</span>
-                <h3 class="fk-title">
-                    <a href="<?php echo e(route('site.books.show', $book)); ?>" style="color:inherit;"><?php echo e($book->title_en); ?></a>
-                </h3>
-                <p class="fk-desc"><?php echo e(Str::limit($book->description_en, 100)); ?></p>
+  <a href="<?php echo e(route('site.books.show', $book)); ?>" style="color: inherit; text-decoration: none;">
+    <h3 class="fk-title">
+        <?php echo e($book->title_en); ?>
 
+    </h3>
+
+    <p class="fk-desc">
+        <?php echo e(Str::limit($book->description_en, 100)); ?>
+
+    </p>
+</a>
                 <div class="fk-meta">
                     <div class="fk-meta-row">
                         <span class="fk-meta-label">Author</span>
@@ -81,11 +87,17 @@
 
             <div class="fk-details">
                 <span class="fk-eyebrow">النسخة العربية</span>
-                <h3 class="fk-title">
-                    <a href="<?php echo e(route('site.books.show', $book)); ?>" style="color:inherit;"><?php echo e($book->title_ar); ?></a>
-                </h3>
-                <p class="fk-desc"><?php echo e(Str::limit($book->description_ar, 100)); ?></p>
+            <a href="<?php echo e(route('site.books.show', $book)); ?>" style="color: inherit; text-decoration: none;">
+    <h3 class="fk-title">
+        <?php echo e($book->title_ar); ?>
 
+    </h3>
+
+    <p class="fk-desc">
+        <?php echo e(Str::limit($book->description_ar, 100)); ?>
+
+    </p>
+</a>
                 <div class="fk-meta">
                     <div class="fk-meta-row">
                         <span class="fk-meta-label">المؤلف</span>
