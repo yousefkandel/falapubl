@@ -1,3 +1,4 @@
+```blade
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -81,6 +82,25 @@
         content="<?php echo $__env->yieldContent('twitter_image', asset('images/site/logo.svg')); ?>"
     >
 
+    
+    <?php
+        $organizationSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            '@id' => url('/') . '#organization',
+            'name' => 'فَلَك للنشر والترجمة',
+            'alternateName' => 'فلك',
+            'url' => url('/'),
+            'logo' => asset('images/site/logo.svg'),
+            'description' => 'فَلَك للنشر والترجمة — دار نشر وترجمة بين العربية والإنجليزية.',
+        ];
+    ?>
+
+    <script type="application/ld+json">
+        <?php echo json_encode($organizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
+
+    </script>
+
     <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 
@@ -100,4 +120,5 @@
 
 </body>
 </html>
+```
 <?php /**PATH D:\falakpubl\resources\views/site/layout.blade.php ENDPATH**/ ?>

@@ -81,6 +81,24 @@
         content="@yield('twitter_image', asset('images/site/logo.svg'))"
     >
 
+    {{-- Google Organization Schema --}}
+    @php
+        $organizationSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            '@id' => url('/') . '#organization',
+            'name' => 'فَلَك للنشر والترجمة',
+            'alternateName' => 'فلك',
+            'url' => url('/'),
+            'logo' => asset('images/site/logo.svg'),
+            'description' => 'فَلَك للنشر والترجمة — دار نشر وترجمة بين العربية والإنجليزية.',
+        ];
+    @endphp
+
+    <script type="application/ld+json">
+        {!! json_encode($organizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
     @stack('styles')
 </head>
 
