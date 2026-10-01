@@ -81,25 +81,45 @@
         content="@yield('twitter_image', asset('images/site/logo.svg'))"
     >
 
-    {{-- Google Organization Schema --}}
-    @php
-        $organizationSchema = [
-            '@context' => 'https://schema.org',
-            '@type' => 'Organization',
+{{-- Google Organization Schema --}}
+@php
+    $organizationSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        '@id' => url('/') . '#organization',
+        'name' => 'فَلَك للنشر والترجمة',
+        'alternateName' => 'فلك',
+        'url' => url('/'),
+        'logo' => asset('images/site/logo.svg'),
+        'description' => 'فَلَك للنشر والترجمة — دار نشر وترجمة بين العربية والإنجليزية.',
+    ];
+@endphp
+
+<script type="application/ld+json">
+    {!! json_encode($organizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+
+
+{{-- Google WebSite Schema --}}
+@php
+    $websiteSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        '@id' => url('/') . '#website',
+        'url' => url('/'),
+        'name' => 'فلك',
+        'alternateName' => 'فَلَك للنشر والترجمة',
+        'publisher' => [
             '@id' => url('/') . '#organization',
-            'name' => 'فَلَك للنشر والترجمة',
-            'alternateName' => 'فلك',
-            'url' => url('/'),
-            'logo' => asset('images/site/logo.svg'),
-            'description' => 'فَلَك للنشر والترجمة — دار نشر وترجمة بين العربية والإنجليزية.',
-        ];
-    @endphp
+        ],
+    ];
+@endphp
 
-    <script type="application/ld+json">
-        {!! json_encode($organizationSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
-    </script>
+<script type="application/ld+json">
+    {!! json_encode($websiteSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
 
-    @stack('styles')
+@stack('styles')
 </head>
 
 <body class="cosmic-canvas">
