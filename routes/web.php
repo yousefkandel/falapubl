@@ -93,3 +93,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/contact-messages/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('contact-messages.destroy');
     Route::post('/contact-messages/{contactMessage}/read', [ContactMessageController::class, 'markRead'])->name('contact-messages.read');
 });
+
+Route::get('/sitemap.xml', function () {
+    $books = \App\Models\Book::all();
+    $authors = \App\Models\Author::all();
+    $translators = \App\Models\Translator::all();
+
+    return response()->view('sitemap', compact(
+        'books',
+        'authors',
+        'translators'
+    ))->header('Content-Type', 'application/xml');
+})->name('sitemap');
