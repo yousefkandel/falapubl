@@ -101,14 +101,19 @@
 
 
 {{-- Google WebSite Schema --}}
+{{-- Google WebSite Schema --}}
 @php
     $websiteSchema = [
         '@context' => 'https://schema.org',
         '@type' => 'WebSite',
         '@id' => url('/') . '#website',
         'url' => url('/'),
-        'name' => 'فلك',
-        'alternateName' => 'فَلَك للنشر والترجمة',
+        'name' => 'فَلَك للنشر والترجمة',
+        'alternateName' => [
+            'فلك',
+            'Falak Publishing',
+            'Falak Publishing & Translation',
+        ],
         'publisher' => [
             '@id' => url('/') . '#organization',
         ],
@@ -118,7 +123,6 @@
 <script type="application/ld+json">
     {!! json_encode($websiteSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
-
 @stack('styles')
 </head>
 
