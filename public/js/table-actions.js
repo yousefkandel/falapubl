@@ -14,6 +14,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!tableBody) return; // مش في صفحة الكتب، اخرج بدون تنفيذ شيء
 
+    const bookDetailsModal = document.getElementById('book-details-modal');
+    const bookDetailsDialog = bookDetailsModal?.querySelector('.book-details-modal');
+    let previousBookDetailsFocus = null;
+    let previousBookDetailsOverflow = '';
+
+    function closeBookDetails() {
+        if (!bookDetailsModal) return;
+        bookDetailsModal.classList.remove('open');
+        bookDetailsModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = previousBookDetailsOverflow;
+        if (previousBookDetailsFocus?.isConnected) previousBookDetailsFocus.focus();
+    }
+
+    tableBody.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-view');
+        if (!btn || !bookDetailsModal || !bookDetailsDialog) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        previousBookDetailsFocus = btn;
+        previousBookDetailsOverflow = document.body.style.overflow;
+
+        const fields = {
+            titleAr: 'titleAr',
+            titleEn: 'titleEn',
+            categoryAr: 'categoryAr',
+            categoryEn: 'categoryEn',
+            author: 'author',
+            translator: 'translator',
+            publicationYear: 'publicationYear',
+            pagesCount: 'pagesCount',
+            englishPublicationYear: 'englishPublicationYear',
+            englishPages: 'englishPages',
+            descriptionAr: 'descriptionAr',
+            descriptionEn: 'descriptionEn',
+            status: 'status',
+            createdAt: 'createdAt',
+            updatedAt: 'updatedAt'
+        };
+
+        for (const [key, datasetKey] of Object.entries(fields)) {
+            const value = btn.dataset[datasetKey];
+            const element = bookDetailsModal.querySelector(`[data-book-detail="${key}"]`);
+            if (element) element.textContent = value?.trim() || 'لا يوجد';
+        }
+
+        for (const image of bookDetailsModal.querySelectorAll('[data-book-detail-image]')) {
+            const language = image.dataset.bookDetailImage;
+            const source = btn.dataset[`image${language === 'ar' ? 'Ar' : 'En'}`];
+            image.hidden = !source;
+            if (source) image.src = source;
+            else image.removeAttribute('src');
+            image.closest('figure').hidden = !source;
+        }
+
+        bookDetailsModal.classList.add('open');
+        bookDetailsModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        bookDetailsDialog.focus();
+    });
+
+    bookDetailsModal?.addEventListener('click', (e) => {
+        if (e.target === bookDetailsModal || e.target.closest('[data-close-book-details]')) closeBookDetails();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && bookDetailsModal?.classList.contains('open')) closeBookDetails();
+    });
+
     /* ============================================================
        1) حذف كتاب عبر AJAX (بدون إعادة تحميل الصفحة)
        ============================================================ */

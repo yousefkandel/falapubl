@@ -137,7 +137,13 @@
     {{-- Footer --}}
     @include('site.partials.footer')
 
+    <div class="book-lightbox" id="book-cover-lightbox" role="dialog" aria-modal="true" aria-label="عرض غلاف الكتاب" dir="rtl" hidden>
+        <button type="button" class="book-lightbox__close" data-close-book-lightbox>إغلاق</button>
+        <img class="book-lightbox__image" data-book-lightbox-image alt="">
+    </div>
+
     {{-- Page Scripts --}}
+    <script src="{{ asset('js/book-cover-lightbox.js') }}" defer></script>
     @stack('scripts')
 
 </body>

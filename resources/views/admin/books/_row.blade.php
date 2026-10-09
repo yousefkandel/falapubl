@@ -51,23 +51,7 @@
 
     <td>
 
-        {{ $book->publication_year }}
-
-        <br>
-
-        <small class="text-muted">
-
-            {{ $book->pages_count }} صفحة
-
-        </small>
-
-        @if($book->english_publication_year || $book->english_pages)
-            <br>
-            <small class="text-muted">
-                English: {{ $book->english_publication_year ?? '—' }}
-                · {{ $book->english_pages ? $book->english_pages . ' pages' : '—' }}
-            </small>
-        @endif
+        {{ $book->translator?->name_ar ?? 'لا يوجد مترجم' }}
 
     </td>
 
@@ -98,6 +82,31 @@
         <div class="row-actions">
 
             <button
+                type="button"
+                class="icon-btn btn-view"
+                aria-label="عرض تفاصيل {{ $book->title_ar }}"
+                data-title-ar="{{ $book->title_ar }}"
+                data-title-en="{{ $book->title_en }}"
+                data-category-ar="{{ $book->category_ar }}"
+                data-category-en="{{ $book->category_en }}"
+                data-author="{{ $book->author?->name_ar }}"
+                data-translator="{{ $book->translator?->name_ar }}"
+                data-publication-year="{{ $book->publication_year }}"
+                data-pages-count="{{ $book->pages_count }}"
+                data-english-publication-year="{{ $book->english_publication_year }}"
+                data-english-pages="{{ $book->english_pages }}"
+                data-description-ar="{{ $book->description_ar }}"
+                data-description-en="{{ $book->description_en }}"
+                data-status="{{ $book->status ? 'مفعل' : 'غير مفعل' }}"
+                data-image-ar="{{ $book->image_ar ? asset('storage/' . $book->image_ar) : '' }}"
+                data-image-en="{{ $book->image_en ? asset('storage/' . $book->image_en) : '' }}"
+                data-created-at="{{ $book->created_at?->format('Y-m-d H:i') }}"
+                data-updated-at="{{ $book->updated_at?->format('Y-m-d H:i') }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+
+            <button
+                type="button"
                 class="icon-btn btn-edit"
                 data-id="{{ $book->id }}"
                 data-title-ar="{{ $book->title_ar }}"

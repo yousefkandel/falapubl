@@ -9,7 +9,9 @@
         <div class="fk-half fk-half--start" dir="ltr">
             <div class="fk-cover">
                 @if($book->image_en)
-                    <img src="{{ asset('storage/' . $book->image_en) }}" alt="{{ $book->title_en }}" class="fk-cover-image">
+                    <button type="button" class="fk-cover-image-trigger js-book-cover-open" aria-label="عرض غلاف {{ $book->title_en }} بحجم أكبر">
+                        <img src="{{ asset('storage/' . $book->image_en) }}" alt="{{ $book->title_en }}" class="fk-cover-image">
+                    </button>
                 @else
                     <div class="fk-cover-inner">
                         <svg class="fk-cover-orbits" viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice">
@@ -68,7 +70,9 @@
         <div class="fk-half fk-half--end" dir="rtl">
             <div class="fk-cover">
                 @if($book->image_ar)
-                    <img src="{{ asset('storage/' . $book->image_ar) }}" alt="{{ $book->title_ar }}" class="fk-cover-image">
+                    <button type="button" class="fk-cover-image-trigger js-book-cover-open" aria-label="عرض غلاف {{ $book->title_ar }} بحجم أكبر">
+                        <img src="{{ asset('storage/' . $book->image_ar) }}" alt="{{ $book->title_ar }}" class="fk-cover-image">
+                    </button>
                 @else
                     <div class="fk-cover-inner">
                         <svg class="fk-cover-orbits" viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice">

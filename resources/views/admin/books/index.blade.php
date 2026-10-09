@@ -122,7 +122,7 @@
                     <th>العنوان (AR)</th>
                     <th>العنوان (EN)</th>
                     <th>المؤلف</th>
-                    <th>سنة النشر</th>
+                    <th>المترجم</th>
                     <th>الحالة</th>
                     <th>الإجراءات</th>
                 </tr>
@@ -137,6 +137,8 @@
         {{ $books->links() }}
     </div>
 </div>
+
+@include('admin.books._details-modal')
 
 {{-- ================= Modal ================= --}}
 <div class="modal-backdrop" id="book-modal">
