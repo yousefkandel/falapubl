@@ -286,13 +286,13 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
   position: relative;
   flex: 0 0 220px;
   width: 220px;
-  height: 275px;
-  aspect-ratio: 820 / 1024;
+  height: 320px;
+  aspect-ratio: 11 / 16;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(201,160,99,.5);
   box-shadow: 0 14px 34px rgba(0,0,0,.45), inset 0 0 40px rgba(0,0,0,.25);
-  background: #241d38 url('../images/site/falak-book-mockup-background.jpg') center / contain no-repeat;
+  background: linear-gradient(160deg, var(--violet2), var(--violet3) 55%, var(--accent));
 }
 
 .fk-cover--soon{
@@ -303,37 +303,25 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
 /* يعرض الغلاف كاملًا داخل مساحة موحدة دون تغيير نسبة أبعاده */
 .fk-cover-image{
   position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 51%;
-  width: 60%;
-  height: 70%;
-  transform: translate(-50%, -50%) rotate(-1.5deg);
-  object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 12px 16px rgba(0,0,0,.6));
-}
-
-.fk-cover__trigger{
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 51%;
-  width: 60%;
-  height: 70%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  transform: translate(-50%, -50%);
-  cursor: zoom-in;
-}
-.fk-cover__trigger:focus-visible{ outline: 2px solid var(--gold-light); outline-offset: 3px; }
-.fk-cover__trigger .fk-cover-image{
   inset: 0;
   width: 100%;
   height: 100%;
-  transform: rotate(-1.5deg);
+  object-fit: contain;
+  object-position: center;
 }
+.fk-cover-image-trigger{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.fk-cover-image-trigger:focus-visible{ outline: 2px solid var(--gold-light); outline-offset: 3px; }
 
 /* المحتوى الافتراضي (لما مفيش صورة) */
 .fk-cover-inner{
@@ -552,7 +540,7 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
     flex: 0 0 auto;
     width: min(220px, 100%);
     height: auto;
-    aspect-ratio: 820 / 1024;
+    aspect-ratio: 11 / 16;
     margin-bottom: 20px;
   }
 
@@ -593,37 +581,23 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 72px 20px 24px;
   background: rgba(10,7,20,.9);
   backdrop-filter: blur(5px);
 }
-.book-lightbox__scene{
-  position: relative;
-  width: min(90vw, 56vh);
-  max-height: 88dvh;
-  aspect-ratio: 820 / 1024;
-  overflow: hidden;
-  border: 1px solid rgba(201,160,99,.55);
-  border-radius: 12px;
-  background: #241d38 url('../images/site/falak-book-mockup-background.jpg') center / contain no-repeat;
-  box-shadow: 0 24px 70px rgba(0,0,0,.6);
-}
 .book-lightbox__image{
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 51%;
-  width: 60%;
-  height: 70%;
-  transform: translate(-50%, -50%) rotate(-1.5deg);
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 112px);
   object-fit: contain;
-  filter: drop-shadow(0 12px 16px rgba(0,0,0,.6));
+  box-shadow: 0 24px 70px rgba(0,0,0,.6);
 }
 .book-lightbox__close{
   position: absolute;
-  z-index: 2;
-  top: 10px;
-  inset-inline-end: 10px;
+  top: 18px;
+  inset-inline-end: 20px;
   width: 42px;
   height: 42px;
   padding: 0;
@@ -636,9 +610,8 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
 }
 .book-lightbox__close:hover{ background: rgba(201,160,99,.2); }
 @media (max-width: 480px){
-  .book-lightbox:not([hidden]){ padding: 12px; }
-  .book-lightbox__scene{ width: min(90vw, 56vh); }
-  .book-lightbox__close{ top: 7px; inset-inline-end: 7px; width: 38px; height: 38px; }
+  .book-lightbox:not([hidden]){ padding: 64px 12px 12px; }
+  .book-lightbox__close{ top: 12px; inset-inline-end: 12px; width: 38px; height: 38px; }
 }
 
 /* ============================================================

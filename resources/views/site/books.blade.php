@@ -17,10 +17,10 @@
     </div>
 
     <div class="hero-content">
-        <h1 style="font-size: clamp(26px,4vw,40px);">مكتبة فَلَك</h1>
-        <p>تصفّح كل الإصدارات — عربي وإنجليزي جنبًا إلى جنب.</p>
+        <h1 style="font-size: clamp(26px,4vw,40px);">فلك للترجمة والنشر والتوزيع</h1>
+        <p>تصفّح كل الإصدارات</p>
 
-        <form method="GET" action="{{ route('site.books') }}" class="fk-search-form" id="books-search-form" data-ajax-search="books">
+        <form method="GET" action="{{ route('sitebooks') }}" class="fk-search-form" id="books-search-form" data-ajax-search="books">
             <input type="search" name="search" value="{{ request('search') }}" placeholder="ابحث بعنوان الكتاب...">
             <button type="submit" aria-label="بحث">
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
