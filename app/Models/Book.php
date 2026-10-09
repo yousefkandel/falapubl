@@ -21,6 +21,8 @@ protected $fillable = [
 
     'publication_year',
     'pages_count',
+    'english_publication_year',
+    'english_pages',
 
     'description_ar',
     'description_en',
@@ -34,6 +36,8 @@ protected $fillable = [
  protected $casts = [
     'publication_year' => 'integer',
     'pages_count' => 'integer',
+    'english_publication_year' => 'integer',
+    'english_pages' => 'integer',
     'status' => 'boolean',
 ];
 

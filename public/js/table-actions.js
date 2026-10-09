@@ -184,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'description_en': 'descriptionEn',
                 'publication_year': 'publicationYear',
                 'pages_count': 'pagesCount',
+                'english_publication_year': 'englishPublicationYear',
+                'english_pages': 'englishPages',
                 'status': 'status'
             };
 

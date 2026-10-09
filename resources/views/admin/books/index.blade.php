@@ -228,7 +228,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                     <div class="form-group">
                         <label class="form-label">سنة النشر</label>
                         <input type="number" name="publication_year" id="publication_year" class="form-control">
@@ -236,11 +236,27 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                     <div class="form-group">
                         <label class="form-label">عدد الصفحات</label>
                         <input type="number" name="pages_count" id="pages_count" class="form-control">
                         <span class="error-message" id="error-pages_count"></span>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-label">English Publication Year</label>
+                        <input type="number" name="english_publication_year" id="english_publication_year" class="form-control" min="1000" max="9999" step="1">
+                        <span class="error-message" id="error-english_publication_year"></span>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-label">English Pages</label>
+                        <input type="number" name="english_pages" id="english_pages" class="form-control" min="1" step="1">
+                        <span class="error-message" id="error-english_pages"></span>
                     </div>
                 </div>
 

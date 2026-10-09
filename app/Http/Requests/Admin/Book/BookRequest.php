@@ -25,6 +25,8 @@ class BookRequest extends FormRequest
 
             'publication_year' => ['required', 'digits:4'],
             'pages_count' => ['required', 'integer', 'min:1'],
+            'english_publication_year' => ['nullable', 'digits:4'],
+            'english_pages' => ['nullable', 'integer', 'min:1'],
 
             'description_ar' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],

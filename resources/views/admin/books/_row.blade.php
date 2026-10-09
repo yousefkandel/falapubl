@@ -61,6 +61,14 @@
 
         </small>
 
+        @if($book->english_publication_year || $book->english_pages)
+            <br>
+            <small class="text-muted">
+                English: {{ $book->english_publication_year ?? '—' }}
+                · {{ $book->english_pages ? $book->english_pages . ' pages' : '—' }}
+            </small>
+        @endif
+
     </td>
 
     <td>
@@ -100,6 +108,8 @@
                 data-translator-id="{{ $book->translator_id }}"
                 data-publication-year="{{ $book->publication_year }}"
                 data-pages-count="{{ $book->pages_count }}"
+                data-english-publication-year="{{ $book->english_publication_year }}"
+                data-english-pages="{{ $book->english_pages }}"
                 data-description-ar="{{ $book->description_ar }}"
                 data-description-en="{{ $book->description_en }}"
                 data-status="{{ $book->status }}"

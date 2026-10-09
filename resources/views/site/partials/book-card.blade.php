@@ -55,8 +55,15 @@
                         </span>
                     </div>
                     @endif
+                    @if($book->category_en)
                     <div class="fk-meta-row"><span class="fk-meta-label">Category</span><span class="fk-meta-value">{{ $book->category_en }}</span></div>
-                    <div class="fk-meta-row"><span class="fk-meta-label">Pages</span><span class="fk-meta-value">{{ $book->pages_count }}</span></div>
+                    @endif
+                    @if($book->english_pages)
+                    <div class="fk-meta-row"><span class="fk-meta-label">Pages</span><span class="fk-meta-value">{{ $book->english_pages }}</span></div>
+                    @endif
+                                        @if($book->english_publication_year)
+                        <div class="fk-meta-row"><span class="fk-meta-label">Publication Year</span><span class="fk-meta-value">{{ $book->english_publication_year }}</span></div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -113,8 +120,15 @@
                         </span>
                     </div>
                     @endif
+                    @if($book->category_ar)
                     <div class="fk-meta-row"><span class="fk-meta-label">القسم</span><span class="fk-meta-value">{{ $book->category_ar }}</span></div>
+                    @endif
+                    @if($book->pages_count)
                     <div class="fk-meta-row"><span class="fk-meta-label">عدد الصفحات</span><span class="fk-meta-value">{{ $book->pages_count }}</span></div>
+                    @endif
+                    @if($book->publication_year)
+                        <div class="fk-meta-row"><span class="fk-meta-label">سنة النشر</span><span class="fk-meta-value">{{ $book->publication_year }}</span></div>
+                    @endif
                 </div>
             </div>
         </div>
