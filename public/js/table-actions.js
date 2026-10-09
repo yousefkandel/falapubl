@@ -60,13 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (element) element.textContent = value?.trim() || 'لا يوجد';
         }
 
-        for (const image of bookDetailsModal.querySelectorAll('[data-book-detail-image]')) {
-            const language = image.dataset.bookDetailImage;
-            const source = btn.dataset[`image${language === 'ar' ? 'Ar' : 'En'}`];
-            image.hidden = !source;
-            if (source) image.src = source;
-            else image.removeAttribute('src');
-            image.closest('figure').hidden = !source;
+        const coverImage = bookDetailsModal.querySelector('[data-book-detail-cover]');
+        const coverSource = btn.dataset.imageAr || btn.dataset.imageEn;
+        if (coverImage) {
+            coverImage.hidden = !coverSource;
+            if (coverSource) {
+                coverImage.src = coverSource;
+                coverImage.alt = btn.dataset.imageAr ? (btn.dataset.titleAr || 'غلاف الكتاب') : (btn.dataset.titleEn || 'غلاف الكتاب');
+            } else {
+                coverImage.removeAttribute('src');
+                coverImage.alt = 'غلاف الكتاب';
+            }
         }
 
         bookDetailsModal.classList.add('open');

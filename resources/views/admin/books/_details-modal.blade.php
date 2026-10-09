@@ -5,15 +5,13 @@
             <button type="button" data-close-book-details aria-label="إغلاق">×</button>
         </div>
 
-        <div class="book-details-covers" dir="rtl">
-            <figure>
-                <img data-book-detail-image="ar" alt="غلاف الكتاب العربي" hidden>
-                <figcaption>الغلاف العربي</figcaption>
-            </figure>
-            <figure>
-                <img data-book-detail-image="en" alt="غلاف الكتاب الإنجليزي" hidden>
-                <figcaption>الغلاف الإنجليزي</figcaption>
-            </figure>
+        <div class="book-details-mockup" dir="rtl">
+            <img
+                class="book-details-mockup__background"
+                src="{{ asset('images/site/falak-book-mockup-background.jpg') }}"
+                alt=""
+                aria-hidden="true">
+            <img data-book-detail-cover alt="غلاف الكتاب" hidden>
         </div>
 
         <dl class="book-details-grid" dir="rtl">

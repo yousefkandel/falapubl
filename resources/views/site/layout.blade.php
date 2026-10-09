@@ -138,8 +138,10 @@
     @include('site.partials.footer')
 
     <div class="book-lightbox" id="book-cover-lightbox" role="dialog" aria-modal="true" aria-label="عرض غلاف الكتاب" dir="rtl" hidden>
-        <button type="button" class="book-lightbox__close" data-close-book-lightbox>إغلاق</button>
-        <img class="book-lightbox__image" data-book-lightbox-image alt="">
+        <div class="book-lightbox__scene">
+            <button type="button" class="book-lightbox__close" data-close-book-lightbox aria-label="إغلاق نافذة غلاف الكتاب">&times;</button>
+            <img class="book-lightbox__image" data-book-lightbox-image alt="">
+        </div>
     </div>
 
     {{-- Page Scripts --}}

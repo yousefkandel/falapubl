@@ -7,25 +7,7 @@
 
         {{-- النسخة الإنجليزية --}}
         <div class="fk-half fk-half--start" dir="ltr">
-            <div class="fk-cover">
-                @if($book->image_en)
-                    <button type="button" class="fk-cover-image-trigger js-book-cover-open" aria-label="عرض غلاف {{ $book->title_en }} بحجم أكبر">
-                        <img src="{{ asset('storage/' . $book->image_en) }}" alt="{{ $book->title_en }}" class="fk-cover-image">
-                    </button>
-                @else
-                    <div class="fk-cover-inner">
-                        <svg class="fk-cover-orbits" viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice">
-                            <ellipse cx="100" cy="150" rx="70" ry="34" />
-                            <ellipse cx="100" cy="150" rx="70" ry="34" transform="rotate(55 100 150)" />
-                            <ellipse cx="100" cy="150" rx="70" ry="34" transform="rotate(-55 100 150)" />
-                        </svg>
-                        <span class="fk-cover-title">{{ $book->title_en }}</span>
-                    </div>
-                @endif
-                <span class="fk-cover-star" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="currentColor" /></svg>
-                </span>
-            </div>
+            @include('site.partials.book-mockup', ['book' => $book, 'edition' => 'en'])
 
             <div class="fk-details">
                 <span class="fk-eyebrow">ENGLISH EDITION</span>
@@ -68,25 +50,7 @@
 
         {{-- النسخة العربية --}}
         <div class="fk-half fk-half--end" dir="rtl">
-            <div class="fk-cover">
-                @if($book->image_ar)
-                    <button type="button" class="fk-cover-image-trigger js-book-cover-open" aria-label="عرض غلاف {{ $book->title_ar }} بحجم أكبر">
-                        <img src="{{ asset('storage/' . $book->image_ar) }}" alt="{{ $book->title_ar }}" class="fk-cover-image">
-                    </button>
-                @else
-                    <div class="fk-cover-inner">
-                        <svg class="fk-cover-orbits" viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice">
-                            <ellipse cx="100" cy="150" rx="70" ry="34" />
-                            <ellipse cx="100" cy="150" rx="70" ry="34" transform="rotate(55 100 150)" />
-                            <ellipse cx="100" cy="150" rx="70" ry="34" transform="rotate(-55 100 150)" />
-                        </svg>
-                        <span class="fk-cover-title">{{ $book->title_ar }}</span>
-                    </div>
-                @endif
-                <span class="fk-cover-star" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="currentColor" /></svg>
-                </span>
-            </div>
+            @include('site.partials.book-mockup', ['book' => $book, 'edition' => 'ar'])
 
             <div class="fk-details">
                 <span class="fk-eyebrow">النسخة العربية</span>

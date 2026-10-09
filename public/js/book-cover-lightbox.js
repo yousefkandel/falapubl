@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let previousOverflow = '';
 
     function closeLightbox() {
+        if (lightbox.hidden) return;
         lightbox.hidden = true;
         lightboxImage.removeAttribute('src');
         document.body.style.overflow = previousOverflow;
