@@ -56,11 +56,11 @@
                 <ul class="fk-foot-contact">
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
-                        <a href="mailto:hello@falak-books.com">hello@falak-books.com</a>
+                        <a href="mailto:hello@falak-books.com">copyright@falakpubl.com</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2C10.5 19 5 13.5 5 6a2 2 0 0 1 1-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
-                        <a href="tel:+971000000000" dir="ltr">+971 00 000 0000</a>
+                        <a href="tel:+971000000000" dir="ltr">+971 50 838 6699</a>
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.5" /></svg>
@@ -74,12 +74,6 @@
 
         <div class="fk-foot-divider"></div>
 
-        <div class="fk-foot-bottom">
-            <span>© {{ date('Y') }} {{ __('messages.copyright') }}</span>
-            <div class="fk-foot-legal">
-                <a href="#">{{ __('messages.privacy') }}</a>
-                <a href="#">{{ __('messages.terms') }}</a>
-            </div>
-        </div>
+
     </div>
 </footer>

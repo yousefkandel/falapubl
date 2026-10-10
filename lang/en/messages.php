@@ -82,7 +82,7 @@ return [
     'about_the_publisher' => 'About Falak',
     'explore' => 'Explore',
     'footer_tagline' => 'Falak publishes and translates books between Arabic and English. Every book is a small universe, and every reader deserves a clear map through it.',
-    'location' => 'Dubai, United Arab Emirates',
+    'location' => ' United Arab Emirates',
     'copyright' => 'Falak Publishing — All rights reserved',
     'cover_popup' => 'View book cover',
     'close_cover_popup' => 'Close book cover dialog',
