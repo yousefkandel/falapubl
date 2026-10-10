@@ -1,6 +1,7 @@
 @extends('site.layout')
 
-@section('title', 'المؤلفون — فَلَك للنشر')
+@section('title', __('messages.authors_title'))
+@section('meta_description', __('messages.authors_intro'))
 
 @section('content')
 
@@ -17,22 +18,22 @@
     </div>
 
     <div class="hero-content">
-        <h1 style="font-size: clamp(26px,4vw,40px);">المؤلفون</h1>
-        <p>تعرّف على كُتّاب إصدارات فَلَك وأعمالهم.</p>
+        <h1 style="font-size: clamp(26px,4vw,40px);">{{ __('messages.authors') }}</h1>
+        <p>{{ __('messages.authors_intro') }}</p>
 
         <form method="GET" action="{{ route('site.authors') }}" class="fk-search-form" id="authors-search-form" data-ajax-search="authors">
-            <input type="search" name="search" value="{{ request('search') }}" placeholder="ابحث باسم المؤلف...">
-            <button type="submit" aria-label="بحث">
+            <input type="search" name="search" value="{{ request('search') }}" placeholder="{{ __('messages.search_author') }}">
+            <button type="submit" aria-label="{{ __('messages.search') }}">
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
             </button>
         </form>
     </div>
 </section>
 
-<section class="fk-people" id="authors-results-section" data-results-url="{{ route('site.authors') }}">
+<section class="fk-people" id="authors-results-section" data-results-url="{{ route('site.authors') }}" data-error-message="{{ __('messages.search_error') }}" data-unexpected-message="{{ __('messages.unexpected_error') }}">
     <div id="authors-search-info">
         @if(request('search'))
-            @include('site.partials._search-info', ['search' => request('search'), 'total' => $authors->total(), 'unit' => 'نتيجة', 'clearUrl' => route('site.authors')])
+            @include('site.partials._search-info', ['search' => request('search'), 'total' => $authors->total(), 'unit' => __('messages.results'), 'clearUrl' => route('site.authors')])
         @endif
     </div>
 

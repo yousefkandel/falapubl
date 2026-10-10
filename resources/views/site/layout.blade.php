@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
 
@@ -7,17 +7,22 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @php
+        $seoTitle = trim($__env->yieldContent('title')) ?: __('messages.default_title');
+        $seoDescription = trim($__env->yieldContent('meta_description')) ?: __('messages.default_description');
+    @endphp
+
     {{-- SEO --}}
-    <title>@yield('title', 'فَلَك للنشر والترجمة | كتب وترجمات')</title>
+    <title>@yield('title', __('messages.default_title'))</title>
 
     <meta
         name="description"
-        content="@yield('meta_description', 'فَلَك للنشر والترجمة — نشر وترجمة الكتب بين العربية والإنجليزية، واكتشاف إصدارات وكتب مميزة لكل قارئ.')"
+        content="{{ $seoDescription }}"
     >
 
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
 
-    <meta name="author" content="فَلَك للنشر والترجمة">
+    <meta name="author" content="{{ __('messages.brand') }}">
 
     {{-- Canonical URL --}}
     <link rel="canonical" href="{{ url()->current() }}">
@@ -46,11 +51,11 @@
 
     {{-- Open Graph --}}
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('og_title', 'فَلَك للنشر والترجمة')">
+    <meta property="og:title" content="@yield('og_title', $seoTitle)">
 
     <meta
         property="og:description"
-        content="@yield('og_description', 'فَلَك للنشر والترجمة — كتب وإصدارات وترجمات بين العربية والإنجليزية.')"
+        content="@yield('og_description', $seoDescription)"
     >
 
     <meta property="og:url" content="{{ url()->current() }}">
@@ -60,20 +65,20 @@
         content="@yield('og_image', asset('images/site/logo.svg'))"
     >
 
-    <meta property="og:locale" content="ar_AR">
-    <meta property="og:site_name" content="فَلَك للنشر والترجمة">
+    <meta property="og:locale" content="{{ app()->isLocale('ar') ? 'ar_AR' : 'en_US' }}">
+    <meta property="og:site_name" content="{{ __('messages.brand') }}">
 
     {{-- Twitter / X --}}
     <meta name="twitter:card" content="summary_large_image">
 
     <meta
         name="twitter:title"
-        content="@yield('twitter_title', 'فَلَك للنشر والترجمة')"
+        content="@yield('twitter_title', $seoTitle)"
     >
 
     <meta
         name="twitter:description"
-        content="@yield('twitter_description', 'فَلَك للنشر والترجمة — كتب وإصدارات وترجمات بين العربية والإنجليزية.')"
+        content="@yield('twitter_description', $seoDescription)"
     >
 
     <meta
@@ -87,11 +92,11 @@
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
         '@id' => url('/') . '#organization',
-        'name' => 'فَلَك للنشر والترجمة',
+        'name' => __('messages.brand'),
         'alternateName' => 'فلك',
         'url' => url('/'),
         'logo' => asset('images/site/logo.svg'),
-        'description' => 'فَلَك للنشر والترجمة — دار نشر وترجمة بين العربية والإنجليزية.',
+        'description' => __('messages.default_description'),
     ];
 @endphp
 
@@ -108,7 +113,7 @@
         '@type' => 'WebSite',
         '@id' => url('/') . '#website',
         'url' => url('/'),
-        'name' => 'فَلَك للنشر والترجمة',
+        'name' => __('messages.brand'),
         'alternateName' => [
             'فلك',
             'Falak Publishing',
@@ -137,8 +142,8 @@
     {{-- Footer --}}
     @include('site.partials.footer')
 
-    <div class="book-lightbox" id="book-cover-lightbox" role="dialog" aria-modal="true" aria-label="عرض غلاف الكتاب" dir="rtl" hidden>
-        <button type="button" class="book-lightbox__close" data-close-book-lightbox aria-label="إغلاق نافذة غلاف الكتاب">&times;</button>
+    <div class="book-lightbox" id="book-cover-lightbox" role="dialog" aria-modal="true" aria-label="{{ __('messages.cover_popup') }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}" hidden>
+        <button type="button" class="book-lightbox__close" data-close-book-lightbox aria-label="{{ __('messages.close_cover_popup') }}">&times;</button>
         <img class="book-lightbox__image" data-book-lightbox-image alt="">
     </div>
 

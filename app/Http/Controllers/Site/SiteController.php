@@ -39,7 +39,7 @@ class SiteController extends Controller
                     ? view('site.partials._search-info', [
                         'search'  => $request->get('search'),
                         'total'   => $books->total(),
-                        'unit'    => 'نتيجة',
+                        'unit'    => __('messages.results'),
                         'clearUrl' => route('site.books'),
                     ])->render()
                     : '',
@@ -83,7 +83,7 @@ class SiteController extends Controller
                     ? view('site.partials._search-info', [
                         'search'  => $request->get('search'),
                         'total'   => $authors->total(),
-                        'unit'    => 'نتيجة',
+                        'unit'    => __('messages.results'),
                         'clearUrl' => route('site.authors'),
                     ])->render()
                     : '',
@@ -125,7 +125,7 @@ class SiteController extends Controller
                     ? view('site.partials._search-info', [
                         'search'  => $request->get('search'),
                         'total'   => $translators->total(),
-                        'unit'    => 'نتيجة',
+                        'unit'    => __('messages.results'),
                         'clearUrl' => route('site.translators'),
                     ])->render()
                     : '',
@@ -173,14 +173,22 @@ class SiteController extends Controller
             'subject' => 'nullable|string|max:200',
             'message' => 'required|string|max:3000',
         ], [
-            'name.required'    => 'الاسم مطلوب.',
-            'email.required'   => 'البريد الإلكتروني مطلوب.',
-            'email.email'      => 'صيغة البريد غير صحيحة.',
-            'message.required' => 'الرسالة مطلوبة.',
+            'name.required'    => __('messages.name_required'),
+            'name.string'      => __('messages.name_invalid'),
+            'name.max'         => __('messages.name_max'),
+            'email.required'   => __('messages.email_required'),
+            'email.string'     => __('messages.email_field_invalid'),
+            'email.email'      => __('messages.email_invalid'),
+            'email.max'        => __('messages.email_max'),
+            'subject.string'   => __('messages.subject_invalid'),
+            'subject.max'      => __('messages.subject_max'),
+            'message.required' => __('messages.message_required'),
+            'message.string'   => __('messages.message_invalid'),
+            'message.max'      => __('messages.message_max'),
         ]);
 
         \App\Models\ContactMessage::create($data);
 
-        return back()->with('success', 'تم استلام رسالتك بنجاح. سنرد عليك في أقرب وقت.');
+        return back()->with('success', __('messages.contact_success'));
     }
 }

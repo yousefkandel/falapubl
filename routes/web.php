@@ -10,12 +10,31 @@ use App\Http\Controllers\Admin\Translator\TranslatorController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
 | Public Site (الواجهة العامة)
 |--------------------------------------------------------------------------
 */
+Route::get('/language/{locale}', function (Request $request, string $locale) {
+    abort_unless(in_array($locale, ['ar', 'en'], true), 404);
+
+    $request->session()->put('locale', $locale);
+    Cookie::queue(cookie('locale', $locale, 60 * 24 * 365, '/', null, $request->isSecure(), true, false, 'lax'));
+
+    $previousUrl = url()->previous();
+    $previousParts = parse_url($previousUrl);
+    if (! is_array($previousParts)
+        || ! in_array(strtolower($previousParts['scheme'] ?? ''), ['http', 'https'], true)
+        || ($previousParts['host'] ?? null) !== $request->getHost()) {
+        $previousUrl = route('site.home');
+    }
+
+    return redirect()->to($previousUrl);
+})->name('site.language.switch');
+
 Route::get('/', [SiteController::class, 'home'])->name('site.home');
 Route::get('/books', [SiteController::class, 'books'])->name('site.books');
 Route::get('/books/{book}', [SiteController::class, 'show'])->name('site.books.show');

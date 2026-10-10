@@ -1,6 +1,7 @@
 @extends('site.layout')
 
-@section('title', 'الكتب — فَلَك للنشر')
+@section('title', __('messages.books_title'))
+@section('meta_description', __('messages.books_intro'))
 
 @section('content')
 
@@ -17,22 +18,22 @@
     </div>
 
     <div class="hero-content">
-        <h1 style="font-size: clamp(26px,4vw,40px);">فلك للترجمة والنشر والتوزيع</h1>
-        <p>تصفّح كل الإصدارات</p>
+        <h1 style="font-size: clamp(26px,4vw,40px);">{{ __('messages.books_hero') }}</h1>
+        <p>{{ __('messages.books_intro') }}</p>
 
         <form method="GET" action="{{ route('site.books') }}" class="fk-search-form" id="books-search-form" data-ajax-search="books">
-            <input type="search" name="search" value="{{ request('search') }}" placeholder="ابحث بعنوان الكتاب...">
-            <button type="submit" aria-label="بحث">
+            <input type="search" name="search" value="{{ request('search') }}" placeholder="{{ __('messages.search_book') }}">
+            <button type="submit" aria-label="{{ __('messages.search') }}">
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
             </button>
         </form>
     </div>
 </section>
 
-<section class="fk-books" id="books-results-section" data-results-url="{{ route('site.books') }}">
+<section class="fk-books" id="books-results-section" data-results-url="{{ route('site.books') }}" data-error-message="{{ __('messages.search_error') }}" data-unexpected-message="{{ __('messages.unexpected_error') }}">
     <div id="books-search-info">
         @if(request('search'))
-            @include('site.partials._search-info', ['search' => request('search'), 'total' => $books->total(), 'unit' => 'نتيجة', 'clearUrl' => route('site.books')])
+            @include('site.partials._search-info', ['search' => request('search'), 'total' => $books->total(), 'unit' => __('messages.results'), 'clearUrl' => route('site.books')])
         @endif
     </div>
 

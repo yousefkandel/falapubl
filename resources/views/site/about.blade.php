@@ -1,6 +1,13 @@
 @extends('site.layout')
 
-@section('title', ($page->title_ar ?? 'من نحن') . ' — فَلَك للنشر')
+@php
+    $isEnglish = app()->isLocale('en');
+    $pageTitle = $isEnglish ? ($page?->title_en ?: $page?->title_ar ?: __('messages.about')) : ($page?->title_ar ?: $page?->title_en ?: __('messages.about'));
+    $pageContent = $isEnglish ? ($page?->content_en ?: $page?->content_ar) : ($page?->content_ar ?: $page?->content_en);
+@endphp
+
+@section('title', $pageTitle . ' — ' . __('messages.brand_short'))
+@section('meta_description', Str::limit($pageContent ?: __('messages.content_updating'), 160))
 
 @section('content')
 
@@ -17,21 +24,18 @@
     </div>
 
     <div class="hero-content">
-        <h1 style="font-size: clamp(26px,4vw,40px);">{{ $page->title_ar ?? 'من نحن' }}</h1>
-        @if(!empty($page->title_en))
-            <p style="opacity:.7;">{{ $page->title_en }}</p>
-        @endif
+        <h1 dir="auto" style="font-size: clamp(26px,4vw,40px);">{{ $pageTitle }}</h1>
     </div>
 </section>
 
 <section class="fk-page-content">
     <div class="fk-page-inner">
-        @if($page && $page->content_ar)
-            <div class="fk-prose">
-                {!! nl2br(e($page->content_ar)) !!}
+        @if($pageContent)
+            <div class="fk-prose" dir="auto">
+                {!! nl2br(e($pageContent)) !!}
             </div>
         @else
-            <p class="fk-empty">المحتوى قيد التحديث.</p>
+            <p class="fk-empty">{{ __('messages.content_updating') }}</p>
         @endif
     </div>
 </section>

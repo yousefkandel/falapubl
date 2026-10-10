@@ -35,7 +35,13 @@
                 },
             });
 
-            if (!res.ok) throw new Error('تعذّر تحميل النتائج، حاول مرة أخرى.');
+            if (!res.ok) {
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'fk-empty';
+                errorMessage.textContent = els.section.dataset.errorMessage || '';
+                if (els.grid) els.grid.replaceChildren(errorMessage);
+                return;
+            }
             const data = await res.json();
 
             if (els.grid) els.grid.innerHTML = data.results_html ?? '';
@@ -49,7 +55,10 @@
             els.section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } catch (err) {
             if (els.grid) {
-                els.grid.innerHTML = `<div class="fk-empty">${err.message || 'حدث خطأ غير متوقع.'}</div>`;
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'fk-empty';
+                errorMessage.textContent = els.section.dataset.unexpectedMessage || '';
+                els.grid.replaceChildren(errorMessage);
             }
         } finally {
             els.section.classList.remove('is-loading');

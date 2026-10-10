@@ -1,6 +1,7 @@
 @extends('site.layout')
 
-@section('title', 'فَلَك — نسير في فلك الكتب')
+@section('title', __('messages.home_title'))
+@section('meta_description', __('messages.home_intro'))
 
 @section('content')
 
@@ -17,11 +18,11 @@
     </div>
 
     <div class="hero-content">
-        <h1>نَسِيرُ فِي فَلَكِ الْكُتُبِ، حَيْثُ لَا نِهَايَةَ لِلشَّغَفِ</h1>
-        <p>فلك تُصدر وتترجم الكتب بين العربية والإنجليزية — كل كتاب هنا كون صغير، وكل قارئ يستحق خريطة واضحة فيه.</p>
+        <h1>{{ __('messages.home_heading') }}</h1>
+        <p>{{ __('messages.home_intro') }}</p>
         <div class="hero-ctas">
-            <a href="{{ route('site.books') }}" class="btn-primary">تصفّح الكتب</a>
-            <a href="{{ route('site.about') }}" class="btn-outline-dark">قصة فلك</a>
+            <a href="{{ route('site.books') }}" class="btn-primary">{{ __('messages.browse_books') }}</a>
+            <a href="{{ route('site.about') }}" class="btn-outline-dark">{{ __('messages.falak_story') }}</a>
         </div>
     </div>
 </section>
@@ -31,7 +32,7 @@
         @include('site.partials.book-card', ['book' => $book])
     @empty
         <div style="text-align:center; color: rgba(248,245,240,.6); padding: 60px 20px;">
-            لا توجد كتب منشورة حالياً — تابعونا قريبًا.
+            {{ __('messages.home_empty') }}
         </div>
     @endforelse
 </section>

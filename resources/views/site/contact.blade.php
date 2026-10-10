@@ -1,6 +1,14 @@
 @extends('site.layout')
 
-@section('title', ($page->title_ar ?? 'تواصل معنا') . ' — فَلَك للنشر')
+@php
+    $isEnglish = app()->isLocale('en');
+    $pageTitle = $isEnglish ? ($page?->title_en ?: $page?->title_ar ?: __('messages.contact')) : ($page?->title_ar ?: $page?->title_en ?: __('messages.contact'));
+    $pageContent = $isEnglish ? ($page?->content_en ?: $page?->content_ar) : ($page?->content_ar ?: $page?->content_en);
+    $pageAddress = $isEnglish ? ($page?->address_en ?: $page?->address_ar) : ($page?->address_ar ?: $page?->address_en);
+@endphp
+
+@section('title', $pageTitle . ' — ' . __('messages.brand_short'))
+@section('meta_description', Str::limit($pageContent ?: __('messages.contact_details'), 160))
 
 @section('content')
 
@@ -17,9 +25,9 @@
     </div>
 
     <div class="hero-content">
-        <h1 style="font-size: clamp(26px,4vw,40px);">{{ $page->title_ar ?? 'تواصل معنا' }}</h1>
-        @if($page && $page->content_ar)
-            <p>{{ $page->content_ar }}</p>
+        <h1 dir="auto" style="font-size: clamp(26px,4vw,40px);">{{ $pageTitle }}</h1>
+        @if($pageContent)
+            <p dir="auto">{{ $pageContent }}</p>
         @endif
     </div>
 </section>
@@ -28,7 +36,7 @@
     <div class="fk-contact-grid">
 
         <div class="fk-contact-info">
-            <h3>بيانات التواصل</h3>
+            <h3>{{ __('messages.contact_details') }}</h3>
             <ul>
                 @if($page && $page->email)
                 <li>
@@ -42,10 +50,10 @@
                     <a href="tel:{{ preg_replace('/\s+/', '', $page->phone) }}" dir="ltr">{{ $page->phone }}</a>
                 </li>
                 @endif
-                @if($page && $page->address_ar)
+                @if($pageAddress)
                 <li>
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.2 7-12.5A7 7 0 005 9.5C5 14.8 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
-                    <span>{{ $page->address_ar }}</span>
+                    <span dir="auto">{{ $pageAddress }}</span>
                 </li>
                 @endif
             </ul>
@@ -58,7 +66,7 @@
 
             @if($errors->any())
                 <div class="fk-alert fk-alert-error">
-                    <ul style="margin:0;padding-right:18px;">
+                    <ul style="margin:0;padding-inline-start:18px;">
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -69,22 +77,22 @@
             <form method="POST" action="{{ route('site.contact.submit') }}" class="fk-contact-form">
                 @csrf
                 <div class="fk-form-row">
-                    <label for="name">الاسم</label>
+                    <label for="name">{{ __('messages.name') }}</label>
                     <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                 </div>
                 <div class="fk-form-row">
-                    <label for="email">البريد الإلكتروني</label>
+                    <label for="email">{{ __('messages.email') }}</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                 </div>
                 <div class="fk-form-row">
-                    <label for="subject">الموضوع (اختياري)</label>
+                    <label for="subject">{{ __('messages.subject') }} ({{ __('messages.optional') }})</label>
                     <input type="text" id="subject" name="subject" value="{{ old('subject') }}">
                 </div>
                 <div class="fk-form-row">
-                    <label for="message">الرسالة</label>
+                    <label for="message">{{ __('messages.message') }}</label>
                     <textarea id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
                 </div>
-                <button type="submit" class="btn-primary">إرسال الرسالة</button>
+                <button type="submit" class="btn-primary">{{ __('messages.send_message') }}</button>
             </form>
         </div>
     </div>

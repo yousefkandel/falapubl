@@ -1,6 +1,12 @@
 @extends('site.layout')
 
-@section('title', $translator->name_ar . ' — فَلَك للنشر')
+@php
+    $translatorName = app()->isLocale('en') ? ($translator->name_en ?: $translator->name_ar) : ($translator->name_ar ?: $translator->name_en);
+    $translatorBio = app()->isLocale('en') ? ($translator->bio_en ?: $translator->bio_ar) : ($translator->bio_ar ?: $translator->bio_en);
+@endphp
+
+@section('title', $translatorName . ' — ' . __('messages.brand_short'))
+@section('meta_description', Str::limit($translatorBio ?: __('messages.translator_books'), 160))
 
 @section('content')
 
@@ -18,13 +24,12 @@
 
     <div class="hero-content fk-profile-hero">
         <div class="fk-profile-avatar">
-            <img src="{{ $translator->avatar }}" alt="{{ $translator->name_ar }}">
+            <img src="{{ $translator->avatar }}" alt="{{ $translatorName }}">
         </div>
         <div>
-            <h1 style="font-size: clamp(24px,3.5vw,36px); margin-bottom: 6px;">{{ $translator->name_ar }}</h1>
-            <p style="opacity:.75; margin-bottom: 10px;">{{ $translator->name_en }}</p>
-            @if($translator->bio_ar)
-                <p style="max-width:560px; opacity:.9;">{{ $translator->bio_ar }}</p>
+            <h1 dir="auto" style="font-size: clamp(24px,3.5vw,36px); margin-bottom: 6px;">{{ $translatorName }}</h1>
+            @if($translatorBio)
+                <p dir="auto" style="max-width:560px; opacity:.9;">{{ $translatorBio }}</p>
             @endif
         </div>
     </div>
@@ -32,13 +37,13 @@
 
 <section class="fk-books">
     <div style="max-width:1180px; margin: 0 auto 16px;">
-        <h2 style="color: var(--gold-light); font-size: 20px;">الكتب التي ترجمها</h2>
+        <h2 style="color: var(--gold-light); font-size: 20px;">{{ __('messages.translator_books') }}</h2>
     </div>
 
     @forelse($books as $book)
         @include('site.partials.book-card', ['book' => $book])
     @empty
-        <div class="fk-empty">لا توجد كتب مترجمة بواسطة هذا المترجم حالياً.</div>
+        <div class="fk-empty">{{ __('messages.no_translator_books') }}</div>
     @endforelse
 
     <div class="fk-pagination">

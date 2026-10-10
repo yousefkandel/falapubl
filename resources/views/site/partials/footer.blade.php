@@ -15,10 +15,10 @@
                         <ellipse cx="20" cy="20" rx="17" ry="8" fill="none" stroke="var(--gold-light)" stroke-width="1.2" transform="rotate(60 20 20)" />
                         <ellipse cx="20" cy="20" rx="17" ry="8" fill="none" stroke="var(--gold-light)" stroke-width="1.2" transform="rotate(120 20 20)" />
                     </svg>
-                    <span>فلك</span>
+                    <span>{{ __('messages.brand_short') }}</span>
                 </div>
                 <p class="fk-foot-tagline">
-                    دار نشر تُصدر وتترجم الكتب بين العربية والإنجليزية — كل كتاب هنا كون صغير، وكل قارئ يستحق خريطة واضحة فيه.
+                    {{ __('messages.footer_tagline') }}
                 </p>
                 <div class="fk-foot-social">
                     <a href="#" aria-label="Instagram" class="fk-social-btn">
@@ -34,25 +34,25 @@
             </div>
 
             <div class="fk-foot-col">
-                <h4 class="fk-foot-heading">عن الدار</h4>
+                <h4 class="fk-foot-heading">{{ __('messages.about_the_publisher') }}</h4>
                 <ul class="fk-foot-links">
-                    <li><a href="{{ route('site.about') }}">من نحن</a></li>
-                    <li><a href="{{ route('site.about') }}">قصة فلك</a></li>
-                    <li><a href="{{ route('site.contact') }}">تواصل معنا</a></li>
+                    <li><a href="{{ route('site.about') }}">{{ __('messages.about') }}</a></li>
+                    <li><a href="{{ route('site.about') }}">{{ __('messages.falak_story') }}</a></li>
+                    <li><a href="{{ route('site.contact') }}">{{ __('messages.contact') }}</a></li>
                 </ul>
             </div>
 
             <div class="fk-foot-col">
-                <h4 class="fk-foot-heading">استكشف</h4>
+                <h4 class="fk-foot-heading">{{ __('messages.explore') }}</h4>
                 <ul class="fk-foot-links">
-                    <li><a href="{{ route('site.books') }}">كل الكتب</a></li>
-                    <li><a href="{{ route('site.authors') }}">المؤلفون</a></li>
-                    <li><a href="{{ route('site.translators') }}">المترجمون</a></li>
+                    <li><a href="{{ route('site.books') }}">{{ __('messages.all_books') }}</a></li>
+                    <li><a href="{{ route('site.authors') }}">{{ __('messages.authors') }}</a></li>
+                    <li><a href="{{ route('site.translators') }}">{{ __('messages.translators') }}</a></li>
                 </ul>
             </div>
 
             <div class="fk-foot-col">
-                <h4 class="fk-foot-heading">تواصل معنا</h4>
+                <h4 class="fk-foot-heading">{{ __('messages.contact') }}</h4>
                 <ul class="fk-foot-contact">
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
@@ -64,7 +64,7 @@
                     </li>
                     <li>
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.5" /></svg>
-                        <span>دبي، الإمارات العربية المتحدة</span>
+                        <span>{{ __('messages.location') }}</span>
                     </li>
                 </ul>
 
@@ -75,10 +75,10 @@
         <div class="fk-foot-divider"></div>
 
         <div class="fk-foot-bottom">
-            <span>© {{ date('Y') }} دار فلك للنشر — جميع الحقوق محفوظة</span>
+            <span>© {{ date('Y') }} {{ __('messages.copyright') }}</span>
             <div class="fk-foot-legal">
-                <a href="#">سياسة الخصوصية</a>
-                <a href="#">الشروط والأحكام</a>
+                <a href="#">{{ __('messages.privacy') }}</a>
+                <a href="#">{{ __('messages.terms') }}</a>
             </div>
         </div>
     </div>
