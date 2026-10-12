@@ -11,15 +11,33 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $books = Book::with(['author', 'translator'])
+        $booksQuery = Book::with(['author', 'translator'])
             ->where('status', 1)
             ->latest()
-            ->take(6)
-            ->get();
+            ->orderByDesc('id');
 
-        return view('site.home', compact('books'));
+        if ($request->boolean('load_more')) {
+            $offset = max(6, (int) $request->query('offset', 6));
+            $batch = $booksQuery->skip($offset)->take(7)->get();
+            $hasMore = $batch->count() > 6;
+            $books = $batch->take(6);
+
+            return response()->json([
+                'results_html' => $books->isEmpty()
+                    ? ''
+                    : view('site.partials.books-results', compact('books'))->render(),
+                'has_more' => $hasMore,
+                'next_offset' => $offset + $books->count(),
+            ]);
+        }
+
+        $batch = $booksQuery->take(7)->get();
+        $hasMore = $batch->count() > 6;
+        $books = $batch->take(6);
+
+        return view('site.home', compact('books', 'hasMore'));
     }
 
     public function books(Request $request)

@@ -35,6 +35,9 @@ img,svg{display:block;}
   width: auto;
   display: block;
 }
+@media (min-width: 1200px){
+  .logo-img{ height: 60px; }
+}
 /* ============================================================
    القماش الكوني: خلفية بنفسجية غامقة مستمرة + نجوم متلألئة
    ============================================================ */
@@ -235,6 +238,10 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
   padding: 64px 24px;
   min-height: 100vh;
 }
+.fk-load-more-wrap{display:flex; justify-content:center; margin:28px auto 0;}
+.fk-load-more-wrap[hidden]{display:none;}
+.fk-load-more{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-width:220px;}
+.fk-load-more:disabled{opacity:.65; cursor:wait;}
 
 .fk-card{
   max-width: 1180px;
@@ -627,13 +634,17 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
   padding: 72px 24px 28px;
 }
 
-.fk-foot-orbits{
-  position: absolute; top: 0; inset-inline-end: 0;
-  width: 620px; height: 100%;
-  opacity: .25;
-  pointer-events: none;
+.fk-footer-stars{position:absolute; inset:0; z-index:0; pointer-events:none;}
+.fk-footer-star{
+  position:absolute;
+  width:clamp(22px, 2.4vw, 32px);
+  height:clamp(22px, 2.4vw, 32px);
+  fill:var(--gold-light);
+  opacity:.38;
 }
-.fk-foot-orbits ellipse{ fill:none; stroke: rgba(232,198,106,.5); stroke-width: .7; }
+.fk-footer-star--one{top:18%; inset-inline-end:17%;}
+.fk-footer-star--two{top:48%; inset-inline-end:47%; width:clamp(18px, 1.8vw, 25px); height:clamp(18px, 1.8vw, 25px);}
+.fk-footer-star--three{bottom:18%; inset-inline-end:13%; width:clamp(20px, 2vw, 28px); height:clamp(20px, 2vw, 28px);}
 
 .fk-foot-inner{
   position: relative;
@@ -652,6 +663,9 @@ nav.links a:hover, nav.links a.active{opacity:1; color:var(--gold-light);}
 }
 @media (max-width: 560px){
   .fk-foot-top{ grid-template-columns: 1fr; }
+  .fk-footer-star--one{top:8%; inset-inline-end:8%;}
+  .fk-footer-star--two{top:47%; inset-inline-end:10%;}
+  .fk-footer-star--three{bottom:8%; inset-inline-end:8%;}
 }
 
 .fk-foot-logo{
@@ -931,6 +945,37 @@ html[dir="ltr"] .fk-profile-hero{ text-align: left; }
   margin: 28px auto 0;
   color: rgba(248,245,240,.8);
 }
+#books-pagination nav{display:flex; justify-content:center;}
+#books-pagination nav > div:first-child{display:none;}
+#books-pagination nav > div:last-child{display:flex; justify-content:center; width:100%;}
+#books-pagination nav > div:last-child > div:first-child{display:none;}
+#books-pagination nav > div:last-child > div:last-child{display:flex; max-width:100%; overflow-x:auto;}
+#books-pagination nav > div:last-child > div:last-child > span{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+#books-pagination nav > div:last-child > div:last-child > span > a,
+#books-pagination nav > div:last-child > div:last-child > span > span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  min-height:40px;
+  padding:8px 10px;
+  border:1px solid rgba(201,160,99,.28);
+  background:rgba(43,34,64,.72);
+  color:var(--cream);
+  text-decoration:none;
+}
+#books-pagination nav > div:last-child > div:last-child > span > a:hover{background:rgba(201,160,99,.16);}
+#books-pagination nav > div:last-child > div:last-child > span[aria-current="page"] > span{
+  background:rgba(201,160,99,.22);
+  color:var(--gold-light);
+}
+#books-pagination nav > div:last-child > div:last-child svg{width:18px; height:18px; flex:0 0 18px;}
+html[dir="rtl"] #books-pagination nav svg{transform:scaleX(-1);}
 
 /* صفحات المحتوى */
 .fk-page-content{

@@ -1,9 +1,9 @@
 <footer class="fk-footer">
-    <svg class="fk-foot-orbits" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <ellipse cx="1040" cy="90" rx="150" ry="70" />
-        <ellipse cx="1040" cy="90" rx="150" ry="70" transform="rotate(55 1040 90)" />
-        <ellipse cx="1040" cy="90" rx="150" ry="70" transform="rotate(-55 1040 90)" />
-    </svg>
+    <div class="fk-footer-stars" aria-hidden="true">
+        <svg class="fk-footer-star fk-footer-star--one" viewBox="0 0 24 24"><path d="M12 1.5 14.6 8.8 22.5 9.2 16.4 14.1 18.5 22 12 17.5 5.5 22l2.1-7.9-6.1-4.9 7.9-.4z" /></svg>
+        <svg class="fk-footer-star fk-footer-star--two" viewBox="0 0 24 24"><path d="M12 1.5 14.6 8.8 22.5 9.2 16.4 14.1 18.5 22 12 17.5 5.5 22l2.1-7.9-6.1-4.9 7.9-.4z" /></svg>
+        <svg class="fk-footer-star fk-footer-star--three" viewBox="0 0 24 24"><path d="M12 1.5 14.6 8.8 22.5 9.2 16.4 14.1 18.5 22 12 17.5 5.5 22l2.1-7.9-6.1-4.9 7.9-.4z" /></svg>
+    </div>
 
     <div class="fk-foot-inner">
         <div class="fk-foot-top">
