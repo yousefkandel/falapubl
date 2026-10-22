@@ -28,11 +28,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Favicon --}}
-    <link
-        rel="icon"
-        href="{{ asset('images/site/logo.svg') }}"
-        type="image/svg+xml"
-    >
+    <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('images/site/favicon-512.png') }}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
