@@ -28,6 +28,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Favicon --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('images/site/favicon-512.png') }}">
 
     {{-- Fonts --}}
