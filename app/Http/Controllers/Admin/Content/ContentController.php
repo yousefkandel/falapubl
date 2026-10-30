@@ -15,8 +15,8 @@ class ContentController extends Controller
             [
                 'title_ar' => 'من نحن',
                 'title_en' => 'About Us',
-                'content_ar' => "دار فلك للنشر والترجمة — نسير في فلك الكتب، حيث لا نهاية للشغف.\n\nنصدر ونترجم الكتب بين العربية والإنجليزية، لنقرّب العوالم ونفتح أبواب المعرفة أمام كل قارئ.",
-                'content_en' => "Falak Publishing & Translation — we orbit books, where passion has no end.\n\nWe publish and translate books between Arabic and English, bridging worlds and opening knowledge to every reader.",
+                'content_ar' => "دار فلك للنشر والترجمة — نسير في فلك الكتب، حيث لا نهاية للشغف.\n\nنصدر ونترجم الكتب — كل كتاب هنا كون صغير، وكل قارئ يستحق خريطة واضحة فيه.",
+                'content_en' => "Falak Publishing & Translation — we orbit books, where passion has no end.\n\nWe publish and translate books , bridging worlds and opening knowledge to every reader.",
                 'status' => true,
             ]
         );
