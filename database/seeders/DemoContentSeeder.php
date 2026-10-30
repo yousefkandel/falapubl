@@ -35,8 +35,8 @@ class DemoContentSeeder extends Seeder
             ['name_en' => 'Omar Nabil'],
             [
                 'name_ar' => 'عمر نبيل',
-                'bio_ar' => 'مترجم أدبي متخصص في الترجمة بين العربية والإنجليزية.',
-                'bio_en' => 'A literary translator specializing in Arabic-English translation.',
+                'bio_ar' => 'مترجم أدبي يهتم بنقل الأعمال الأدبية إلى قراء جدد.',
+                'bio_en' => 'A literary translator focused on bringing literary works to new readers.',
                 'status' => true,
             ]
         );
@@ -78,7 +78,7 @@ class DemoContentSeeder extends Seeder
             [
                 'title_ar' => 'من نحن',
                 'title_en' => 'About Us',
-                'content_ar' => "دار فلك للنشر والترجمة — نسير في فلك الكتب، حيث لا نهاية للشغف.\n\nنصدر ونترجم الكتب بين العربية والإنجليزية، لنقرّب العوالم ونفتح أبواب المعرفة أمام كل قارئ.",
+                'content_ar' => "دار فلك للنشر والترجمة — نسير في فلك الكتب، حيث لا نهاية للشغف.\n\nنصدر كتبًا مميزة ونفتح أبواب المعرفة أمام كل قارئ.",
                 'content_en' => "Falak Publishing & Translation — we orbit books, where passion has no end.",
                 'status' => true,
             ]

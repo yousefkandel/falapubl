@@ -27,7 +27,7 @@ return [
     'authors_title' => 'Authors — Falak Publishing',
     'authors_intro' => 'Meet the authors behind Falak titles and discover their work.',
     'translators_title' => 'Translators — Falak Publishing',
-    'translators_intro' => 'Meet the translators bringing Falak titles between Arabic and English.',
+    'translators_intro' => 'Meet the translators behind Falak’s published titles.',
     'search_book' => 'Search by book title...',
     'search_author' => 'Search by author name...',
     'search_translator' => 'Search by translator name...',
