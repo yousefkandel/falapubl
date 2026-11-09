@@ -1002,19 +1002,21 @@ html[dir="ltr"] .fk-profile-hero{ text-align: left; }
   margin: 28px auto 0;
   color: rgba(248,245,240,.8);
 }
-#books-pagination nav{display:flex; justify-content:center;}
-#books-pagination nav > div:first-child{display:none;}
-#books-pagination nav > div:last-child{display:flex; justify-content:center; width:100%;}
-#books-pagination nav > div:last-child > div:first-child{display:none;}
-#books-pagination nav > div:last-child > div:last-child{display:flex; max-width:100%; overflow-x:auto;}
-#books-pagination nav > div:last-child > div:last-child > span{
+#books-pagination nav, .fk-pagination nav{display:flex; justify-content:center;}
+#books-pagination nav > div:first-child, .fk-pagination nav > div:first-child{display:none;}
+#books-pagination nav > div:last-child, .fk-pagination nav > div:last-child{display:flex; justify-content:center; width:100%;}
+#books-pagination nav > div:last-child > div:first-child, .fk-pagination nav > div:last-child > div:first-child{display:none;}
+#books-pagination nav > div:last-child > div:last-child, .fk-pagination nav > div:last-child > div:last-child{display:flex; max-width:100%; overflow-x:auto;}
+#books-pagination nav > div:last-child > div:last-child > span, .fk-pagination nav > div:last-child > div:last-child > span{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
   align-items:center;
 }
 #books-pagination nav > div:last-child > div:last-child > span > a,
-#books-pagination nav > div:last-child > div:last-child > span > span{
+#books-pagination nav > div:last-child > div:last-child > span > span,
+.fk-pagination nav > div:last-child > div:last-child > span > a,
+.fk-pagination nav > div:last-child > div:last-child > span > span{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -1026,13 +1028,20 @@ html[dir="ltr"] .fk-profile-hero{ text-align: left; }
   color:var(--cream);
   text-decoration:none;
 }
-#books-pagination nav > div:last-child > div:last-child > span > a:hover{background:rgba(201,160,99,.16);}
+#books-pagination nav > div:last-child > div:last-child > span > a:hover,
+.fk-pagination nav > div:last-child > div:last-child > span > a:hover{background:rgba(201,160,99,.16);}
 #books-pagination nav > div:last-child > div:last-child > span[aria-current="page"] > span{
   background:rgba(201,160,99,.22);
   color:var(--gold-light);
 }
-#books-pagination nav > div:last-child > div:last-child svg{width:18px; height:18px; flex:0 0 18px;}
-html[dir="rtl"] #books-pagination nav svg{transform:scaleX(-1);}
+.fk-pagination nav > div:last-child > div:last-child > span[aria-current="page"] > span{
+  background:rgba(201,160,99,.22);
+  color:var(--gold-light);
+}
+#books-pagination nav > div:last-child > div:last-child svg,
+.fk-pagination nav > div:last-child > div:last-child svg{width:18px; height:18px; flex:0 0 18px;}
+html[dir="rtl"] #books-pagination nav svg,
+html[dir="rtl"] .fk-pagination nav svg{transform:scaleX(-1);}
 
 /* صفحات المحتوى */
 .fk-page-content{
