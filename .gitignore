@@ -9,5 +9,5 @@
 /storage/app/public/
 /storage/framework/
 /storage/logs/
-
+/sql/
 .phpunit.result.cache
