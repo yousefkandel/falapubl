@@ -323,6 +323,30 @@ table.falak-table .icon-btn {
   transition: var(--transition);
 }
 table.falak-table .icon-btn svg { width: 15px; height: 15px; }
+
+/* Self-contained paginator styling; framework utility CSS is not loaded in the admin. */
+.admin-pagination { display: flex; justify-content: center; max-width: 100%; margin: 18px auto 0; overflow-x: auto; }
+.admin-pagination__list { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.admin-pagination__list a,
+.admin-pagination__list li > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid var(--falak-border-strong);
+  border-radius: 8px;
+  background: rgba(255,255,255,.04);
+  color: var(--falak-text);
+  text-decoration: none;
+  line-height: 1;
+}
+.admin-pagination__list a:hover { background: rgba(124,91,168,.2); border-color: var(--falak-purple-300); }
+.admin-pagination__list .is-active > span { background: rgba(124,91,168,.3); border-color: var(--falak-purple-300); color: var(--falak-gold-light); font-weight: 700; }
+.admin-pagination__list .is-disabled > span { color: var(--falak-text-faint); opacity: .55; }
+.admin-pagination__icon { display: block; width: 16px; height: 16px; max-width: 16px; max-height: 16px; flex: 0 0 16px; overflow: hidden; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html[dir="rtl"] .admin-pagination__icon { transform: scaleX(-1); }
 table.falak-table .icon-btn:hover { color: var(--falak-text); border-color: var(--falak-border-strong); }
 table.falak-table .icon-btn.danger:hover { color: var(--falak-danger); border-color: rgba(217,112,122,.4); background: rgba(217,112,122,.08); }
 .book-details-backdrop { z-index: 60; }

@@ -119,7 +119,7 @@ class AuthorController extends Controller
                 'success' => true,
                 'count' => $authors->total(),
                 'rows_html' => view('admin.authors._rows', compact('authors'))->render(),
-                // 'pagination' => $authors->links('admin.authors._pagination')->render(),
+                'pagination' => $authors->withQueryString()->links('admin.partials.pagination')->render(),
             ]);
         } catch (\Exception $e) {
             return response()->json([

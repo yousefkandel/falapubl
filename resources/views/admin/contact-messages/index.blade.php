@@ -83,7 +83,7 @@
         </table>
     </div>
 
-    <div>{{ $messages->links() }}</div>
+    <div>{{ $messages->links('admin.partials.pagination') }}</div>
 </div>
 
 @endsection

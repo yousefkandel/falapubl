@@ -119,7 +119,7 @@ class TranslatorController extends Controller
                 'success' => true,
                 'count' => $translators->total(),
                 'rows_html' => view('admin.translators._rows', compact('translators'))->render(),
-                // 'pagination' => $translators->links('admin.translators._pagination')->render(),
+                'pagination' => $translators->withQueryString()->links('admin.partials.pagination')->render(),
             ]);
         } catch (\Exception $e) {
             return response()->json([

@@ -121,6 +121,7 @@ class UserController extends Controller
                 'success' => true,
                 'count' => $users->total(),
                 'rows_html' => view('admin.users._rows', compact('users'))->render(),
+                'pagination' => $users->withQueryString()->links('admin.partials.pagination')->render(),
             ]);
         } catch (\Exception $e) {
             return response()->json([

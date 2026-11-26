@@ -124,7 +124,7 @@
     </div>
 
     <div id="authors-pagination">
-        {{ $authors->links() }}
+        {{ $authors->links('admin.partials.pagination') }}
     </div>
 </div>
 

@@ -124,7 +124,7 @@
     </div>
 
     <div id="translators-pagination">
-        {{ $translators->links() }}
+        {{ $translators->links('admin.partials.pagination') }}
     </div>
 </div>
 

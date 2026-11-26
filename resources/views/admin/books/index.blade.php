@@ -134,7 +134,7 @@
     </div>
 
     <div id="books-pagination">
-        {{ $books->links() }}
+        {{ $books->links('admin.partials.pagination') }}
     </div>
 </div>
 

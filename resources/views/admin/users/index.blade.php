@@ -100,7 +100,7 @@
     </div>
 
     <div id="users-pagination">
-        {{ $users->links() }}
+        {{ $users->links('admin.partials.pagination') }}
     </div>
 </div>
 

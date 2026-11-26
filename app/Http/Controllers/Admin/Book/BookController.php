@@ -88,7 +88,7 @@ class BookController extends Controller
             'success'    => true,
             'count'      => $books->total(),
             'rows_html'  => view('admin.books._rows', compact('books'))->render(),
-            // 'pagination' => (string) $books->links('books._pagination'),
+            'pagination' => $books->withQueryString()->links('admin.partials.pagination')->render(),
         ]);
     }
 }
